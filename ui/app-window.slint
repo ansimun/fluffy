@@ -1,7 +1,27 @@
+import { StandardTableView } from "std-widgets.slint";
+
+component FileTableView inherits StandardTableView {
+    columns: [
+        { title: "Name" },
+        { title: "Type" },
+    ];
+}
+
 export component MainWindow inherits Window {
-    Text {
-        text: "hello world";
-        color: green;
-        font-size: 24pt;
+    default-font-size: 12pt;
+    default-font-family: "comic-sans";
+
+    VerticalLayout {
+        HorizontalLayout {
+            FileTableView { }
+
+            FileTableView { }
+        }
+
+        Text {
+            text: "hello world";
+            color: green;
+            font-size: 1.5rem;
+        }
     }
 }
