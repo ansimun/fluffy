@@ -1,27 +1,52 @@
-import { StandardTableView } from "std-widgets.slint";
+import { StandardTableView, StandardTableView, LineEdit } from "std-widgets.slint";
 
-component FileTableView inherits StandardTableView {
-    columns: [
-        { title: "Name" },
-        { title: "Type" },
-    ];
+component FileListView {
+    VerticalLayout {
+        spacing: 10px;
+        LineEdit {
+            text: "/usr/local/dingdong/foobar";
+        }
+
+        StandardTableView {
+            columns: [
+                { title: "Name", min-width: 100px },
+                { title: "Type", min-width: 100px },
+                { title: "Size", min-width: 100px },
+            ];
+            rows: [
+                [{ text: "foo.txt" }, { text: "file" }, { text: "200KB" }],
+                [{ text: "bar.txt" }, { text: "file" }, { text: "200KB" }]
+            ];
+        }
+
+        LineEdit {
+            placeholder-text: "glob-pattern";
+        }
+    }
 }
 
-export component MainWindow inherits Window {
-    default-font-size: 12pt;
-    default-font-family: "comic-sans";
+export component AppWindow inherits Window {
+
+    public function set_font-size(parameter: length) {
+        self.default-font-size = parameter;
+    }
+
+    public function set_font-family(name: string) {
+        self.default-font-family = name;
+    }
+
+    title: "Commander Fluffy";
 
     VerticalLayout {
         HorizontalLayout {
-            FileTableView { }
+            padding: 10px;
+            FileListView { }
 
-            FileTableView { }
-        }
+            Rectangle {
+                width: 10px;
+            }
 
-        Text {
-            text: "hello world";
-            color: green;
-            font-size: 1.5rem;
+            FileListView { }
         }
     }
 }
