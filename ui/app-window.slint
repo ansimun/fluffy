@@ -1,4 +1,4 @@
-import { StandardTableView, StandardTableView, LineEdit } from "std-widgets.slint";
+import { StandardTableView, LineEdit } from "std-widgets.slint";
 
 component FileListView {
     VerticalLayout {
@@ -10,12 +10,12 @@ component FileListView {
         StandardTableView {
             columns: [
                 { title: "Name", min-width: 100px },
-                { title: "Type", min-width: 100px },
                 { title: "Size", min-width: 100px },
+                { title: "Change Date", min-width: 100px },
             ];
             rows: [
-                [{ text: "foo.txt" }, { text: "file" }, { text: "200KB" }],
-                [{ text: "bar.txt" }, { text: "file" }, { text: "200KB" }]
+                [{ text: "foo.txt" }, { text: "200KB" }, { text: "2025-07-17 10:30" }],
+                [{ text: "bar.txt" }, { text: "200KB" }, { text: "2025-07-17 10:30" }],
             ];
         }
 
