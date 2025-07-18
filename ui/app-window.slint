@@ -25,14 +25,22 @@ component FileListView {
     }
 }
 
+export struct UISettings {
+    fontsize: length,
+    fontfamily: string,
+}
+
 export component AppWindow inherits Window {
 
-    public function set_font-size(parameter: length) {
-        self.default-font-size = parameter;
+    public function get_default_ui_settings() -> UISettings {
+        return {
+            fontsize: self.default-font-size,
+            fontfamily: self.default-font-family,
+        };
     }
-
-    public function set_font-family(name: string) {
-        self.default-font-family = name;
+    public function apply_ui_settings(settings: UISettings) {
+        self.default-font-size = settings.fontsize;
+        self.default-font-family = settings.fontfamily;
     }
 
     title: "Commander Fluffy";

@@ -4,7 +4,13 @@ slint::include_modules!();
 
 fn main() -> Result<(), slint::PlatformError> {
     let app_window = AppWindow::new()?;
-    app_window.invoke_set_font_size(14.0);
-    app_window.invoke_set_font_family("comic sans".to_shared_string());
+
+    let ui_settings = UISettings {
+        fontsize: 14.0,
+        fontfamily: "FreeSans".to_shared_string(),
+    };
+
+    app_window.invoke_apply_ui_settings(ui_settings);
+
     app_window.run()
 }
